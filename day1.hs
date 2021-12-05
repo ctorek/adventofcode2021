@@ -12,6 +12,12 @@ countGreater :: [Ordering] -> Int
 countGreater l =
   length (filter (\x -> x == GT) l)
 
+-- generate a list of sums of each 3 elements
+sumOfThree :: [Integer] -> [Integer]
+sumOfThree l
+  | length l < 3 = []
+  | otherwise    = sum (take 3 l) : sumOfThree (tail l)
+
 -- read strings into integers from file line by line
 readLines :: String -> [Integer]
 readLines l = [read x | x <- lines l]
@@ -19,5 +25,8 @@ readLines l = [read x | x <- lines l]
 main = do
   -- read input from stdin
   input <- getContents
-  let count = countGreater $ comparePrevious $ readLines input
-  print count
+  putStrLn "Part 1"
+  print $ countGreater $ comparePrevious $ readLines input
+
+  putStrLn "Part 2"
+  print $ countGreater $ comparePrevious $ sumOfThree $ readLines input

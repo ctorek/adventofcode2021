@@ -18,8 +18,11 @@ countDepth l
                           then negate $ digitToInt $ last x
                           else digitToInt $ last x
 
+-- mutliply horizontal distance by depth
 part1 :: [String] -> Int
 part1 l = (countHorizontal l) * (countDepth l)
+
+--
 
 main :: IO()
 main = do

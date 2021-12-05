@@ -48,6 +48,3 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/haskell,vim
-
-# input files from aoc
-*/input
