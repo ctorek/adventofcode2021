@@ -24,14 +24,14 @@ epsilonRate l = map replace l
 
 -- takes in string of 0s and 1s and converts to binary
 toDecimal :: String -> Int
-toDecimal l = sum $ zipWith (\b ind -> (read b) * (2 ^ ind)) (map (:[]) l) [0,1..]
+toDecimal l = sum $ zipWith (\b ind -> (read b) * (2 ^ ind)) (reverse $ map (:[]) l) [0,1..]
 
 main :: IO()
 main = do
     input <- getContents
     putStrLn "Part 1:"
     let gamma = toDecimal $ gammaRate $ transpose $ lines input
-    print gamma
     let epsilon = toDecimal $ epsilonRate $ gammaRate $ transpose $ lines input
-    print epsilon
     print (gamma * epsilon)
+
+    putStrLn "Part 2:"
