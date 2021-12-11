@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import sys, os
+
+def usage():
+    print("usage: run <command> [<args>]")
+    sys.exit(1)
+
+
+def run(lang, day):
+    # name of files needed to execute
+    inputs = f"./inputs/day{day}"
+    code = f"./{lang}/day{day}"
+
+    print(f"Running file {code} with input {inputs}")
+
+    # different languages executed differently
+    if (lang == "haskell"):
+        os.system(f"cat {inputs} | runhaskell {code}")
+
+    
+if (__name__ == "__main__"):
+    # incorrect number of args
+    if (len(sys.argv) < 3): usage()
+
+    command = sys.argv[1]
+    if (command == "run"): run(sys.argv[2], sys.argv[3])
+    else: usage()
